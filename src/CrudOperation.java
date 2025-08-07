@@ -8,9 +8,6 @@ import java.util.Scanner;
 public class CrudOperation {
 
     private static final Scanner sc = new Scanner(System.in);
-    public static final Table table = new Table(
-            3, BorderStyle.UNICODE_ROUND_BOX_WIDE
-    );
 
     private static final String URL = "jdbc:postgresql://localhost:5432/test_db";
     private static final String USER = "postgres";
@@ -71,6 +68,9 @@ public class CrudOperation {
 
         ResultSet rs = ps.executeQuery();
 
+        Table table = new Table(
+                3, BorderStyle.UNICODE_ROUND_BOX_WIDE
+        );
         table.addCell("ID");
         table.addCell("NAME");
         table.addCell("AGE");
@@ -80,9 +80,9 @@ public class CrudOperation {
                     rs.getString("name"),
                     rs.getInt("age")
             );
-            table.addCell(rs.getString("id"));
-            table.addCell(rs.getString("name"));
-            table.addCell(rs.getString("age"));
+            table.addCell(String.valueOf(user.getId()));
+            table.addCell(user.getName());
+            table.addCell(String.valueOf(user.getAge()));
             System.out.println(table.render());
         }
 
@@ -165,21 +165,25 @@ public class CrudOperation {
         PreparedStatement ps = connection.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
 
+        Table table = new Table(
+                3, BorderStyle.UNICODE_ROUND_BOX_WIDE
+        );
         table.addCell("ID");
         table.addCell("NAME");
         table.addCell("AGE");
 
         while(rs.next()) {
-            rs.getInt("id");
-            rs.getString("name");
-            rs.getInt("age");
+            User user =  new User(
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getInt("age")
+            );
 
-            table.addCell(rs.getString("id"));
-            table.addCell(rs.getString("name"));
-            table.addCell(rs.getString("age"));
+            table.addCell(String.valueOf(user.getId()));
+            table.addCell(user.getName());
+            table.addCell(String.valueOf(user.getAge()));
         }
         System.out.println(table.render());
-
     }
 
     public static void main(String[] args) {
