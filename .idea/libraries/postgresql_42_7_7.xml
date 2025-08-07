@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="postgresql-42.7.7">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../../RUPP/JAVA/java-library/postgresql-42.7.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../RUPP/JAVA/java-library/text-table-formatter-1.1.2.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/lombok.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
